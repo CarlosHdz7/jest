@@ -1,0 +1,16 @@
+@import '../../../styles/common.scss';
+
+.page-404-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.page-404-title,.page-404-subtitle{
+ color: $white-color;
+}
+
+.page-404-title{
+  font-size: 70px;
+}

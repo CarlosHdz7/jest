@@ -1,0 +1,16 @@
+@import '../../../styles/common.scss';
+
+.input-search-character{
+  width: 40% !important;
+}
+
+.select-comics, .select-stories{
+  width: 30%;
+  padding: 10px;
+  box-sizing: border-box;
+  border: 2px solid $white-color;
+  background-color: $black3-color;
+  color: $white-color;
+  font-weight: map-get($font-weights, bold);
+  margin-bottom: 20px;
+}

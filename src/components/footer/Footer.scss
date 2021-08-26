@@ -1,0 +1,15 @@
+@import '../../styles/common.scss';
+
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $gray4-color;
+  bottom: 0;
+  color: $white-color;  
+  height: 50px;
+  left: 0;
+  position: fixed;
+  width: 100%;
+  z-index: 200;
+}

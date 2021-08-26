@@ -1,0 +1,32 @@
+@import '../../styles/common.scss';
+
+.card{
+  width: 224px;
+  text-decoration: none;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.card--mini{
+  img{
+    max-height: 250px;
+  }
+}
+
+.card-img{
+  border-radius: $radius;
+  width: 100%;
+}
+
+.card-title{
+  color:$white-color;
+}
+
+.mark{
+  position: absolute;
+  top: -15px;
+  right: 0;
+  color: $red2-color;
+  font-size: 40px;
+  z-index: 100;
+}

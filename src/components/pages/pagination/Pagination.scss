@@ -1,0 +1,40 @@
+
+@import '../../../styles/common.scss';
+
+.pagination-container {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.pagination {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  margin: 0px;
+  padding: 0px;
+}
+
+.page-item {
+  margin: 5px;
+  box-sizing: border-box;
+}
+
+.page-link {
+  color: $white-color;
+  padding: 10px;
+  background-color: $black2-color;
+  display: inline-block;
+  text-decoration: none;
+  min-width: 10px;
+  border-radius: 5px;
+}
+
+.page-link-active {
+  background-color: $red2-color;
+}
+
+
+.page-link-inactive {
+  background-color: $black-color;
+  cursor: not-allowed;
+}

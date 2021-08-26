@@ -1,0 +1,133 @@
+@import '~bootstrap-icons/font/bootstrap-icons';
+@import './settings.scss';
+
+body{
+  background-color: $black3-color;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+.cards-container{
+  display: grid;
+  grid-gap:10px;
+  grid-template-columns: repeat(auto-fill, minmax(224px, 1fr));
+  grid-template-rows: auto;
+  justify-items: center;
+}
+
+.title{
+  color: $white-color;
+  font-weight: map-get($font-weights, bold);
+  font-family: 'Bebas Neue', cursive;
+}
+
+.btn{
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  font:inherit;
+  cursor: pointer;
+  margin: 0px 5px;
+}
+
+.btn-red{
+  background-color: $red-color;
+  color:$white-color;
+}
+
+.btn-aqua{
+  background-color: $aqua-color;
+  color:$white-color;
+}
+
+.btn-black{
+  background-color: $black3-color;
+  color:$white-color;
+}
+
+.badged{
+  text-align: center;
+  width: 55px;
+  font-size: 12px;
+  padding: 5px;
+  border-radius: 8px;
+  background-color: $black3-color;
+  margin: 0px 5px;
+}
+
+.badged--red{
+  background-color: $red2-color;
+}
+
+.badged--blue{
+  background-color: $blue-color;
+}
+
+.badged--aqua{
+  background-color: $aqua-color;
+}
+
+.badged-yellow{
+  background-color: $yellow-color;
+}
+
+.detail-container{
+  box-sizing: border-box;
+  padding: 20px 40px;
+  width: 100%;
+  height: auto;
+  background-color: $black-color;
+  display: grid;
+  grid-template-columns: 3fr 9fr;
+  border-radius: $radius;
+  color: $white-color;
+}
+
+.detail-img{
+  border-radius: $radius;
+  border: 4px solid $black3-color;
+}
+
+.detail-list-container{
+  padding: 10px 20px;
+  background-color: $black-color;
+  border-radius: $radius;
+  margin-top: 10PX;
+  color: $white-color;
+}
+
+.detail-title{
+  color: $white-color;
+  margin: 0px;
+  margin-bottom: 5px;
+}
+
+.input-search-container{
+  width: 100%;
+  margin-bottom: 25px;
+}
+
+.input-search{
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  border: 2px solid $white-color;
+  background-color: $black3-color;
+  color: $white-color;
+  font-weight: map-get($font-weights, bold);
+  margin-bottom: 20px;
+}
+
+.no-results{
+  color: $white-color;
+  text-align: center;
+}
+
+.d-none{
+  display: none;
+}
+
+@media (max-width: $tablet) {
+  .detail-container {
+    grid-template-columns: 1fr;
+  }
+}
