@@ -35,6 +35,7 @@ const AppRouter = () => (
           <Route exact path={routesPath.STORIES} component={Stories} />
           <Route exact path={routesPath.STORY} component={Story} />
           <Route exact path={routesPath.ERROR404} component={Error404} />
+          <Route component={Error404} />
         </Switch>
       </div>
       <Footer />
