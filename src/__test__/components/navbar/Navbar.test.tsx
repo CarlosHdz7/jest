@@ -1,3 +1,4 @@
+/* eslint-disable jest/expect-expect */
 /* eslint-disable react/react-in-jsx-scope */
 /* eslint-disable import/no-extraneous-dependencies */
 
@@ -51,6 +52,20 @@ describe('testing footer', () => {
     expect(history.location.pathname).toBe(routesPath.COMICS);
   });
 
+  test('Navbar & sidebar should redirect stories', () => {
+    const history = createMemoryHistory({ initialEntries: [routesPath.STORIES] });
+    const { getAllByText } = render(
+      <Router history={history}>
+        <Navbar />
+      </Router>,
+    );
+    fireEvent.click(getAllByText(/stories/i)[0]);
+    expect(history.location.pathname).toBe(routesPath.STORIES);
+
+    fireEvent.click(getAllByText(/stories/i)[1]);
+    expect(history.location.pathname).toBe(routesPath.STORIES);
+  });
+
   test('Navbar & sidebar should redirect bookmarks', () => {
     const history = createMemoryHistory({ initialEntries: [routesPath.BOOKMARKS] });
     const { getAllByText } = render(
@@ -63,5 +78,20 @@ describe('testing footer', () => {
 
     fireEvent.click(getAllByText(/bookmarks/i)[1]);
     expect(history.location.pathname).toBe(routesPath.BOOKMARKS);
+  });
+
+  test('Sidebar should show & hide itself', () => {
+    const history = createMemoryHistory({ initialEntries: [routesPath.HOME] });
+
+    const { container, getAllByRole } = render(
+      <Router history={history}>
+        <Navbar />
+      </Router>,
+    );
+
+    fireEvent.click(getAllByRole('button')[1]);
+    expect(container.getElementsByClassName('side-bar')[0]).toHaveClass('active');
+    fireEvent.click(getAllByRole('button')[1]);
+    expect(container.getElementsByClassName('side-bar')[0]).not.toHaveClass('active');
   });
 });
