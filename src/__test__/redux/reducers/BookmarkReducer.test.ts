@@ -2,12 +2,12 @@
 /* eslint-disable jest/expect-expect */
 import bookmarkReducer from '../../../redux/reducers/bookmarkReducer';
 import {
-  ADD_BOOKMARK, REMOVE_BOOKMARK, REMOVE_BOOKMARKS, SET_BOOKMARKS,
+  ADD_BOOKMARK, HIDE_BOOKMARK, REMOVE_BOOKMARK, REMOVE_BOOKMARKS, REMOVE_HIDDEN, SET_BOOKMARKS,
 } from '../../../redux/types/bookmarksTypes';
 import { TBookmark } from '../../../types/TBookmark';
 
 describe('testing bookmark reducer', () => {
-  it('should return the initial state', () => {
+  test('should return the initial state', () => {
     expect(bookmarkReducer(undefined, {})).toEqual([]);
   });
 
@@ -86,5 +86,78 @@ describe('testing bookmark reducer', () => {
     };
 
     expect(bookmarkReducer(previousState, action)).toEqual([payloadAdd1, payloadAdd2]);
+  });
+
+  test('should remove hidden', () => {
+    const payloadToRemove = {
+      uid: 'character0',
+      type: 'character',
+      redirect: 'characters',
+      id: 0,
+      name: 'test',
+      hidden: true,
+    };
+    const previousState: TBookmark[] = [payloadToRemove];
+    const action = {
+      type: REMOVE_HIDDEN,
+      payload: { uid: 'character0' },
+    };
+    expect(bookmarkReducer(previousState, action)).toEqual([]);
+  });
+
+  test('should hide bookmark', () => {
+    const payload = {
+      uid: 'character0',
+      type: 'character',
+      redirect: 'characters',
+      id: 0,
+      name: 'test',
+      hidden: false,
+    };
+
+    const payloadToHide = {
+      uid: 'character0',
+    };
+    const previousState: TBookmark[] = [payload];
+    const action = {
+      type: HIDE_BOOKMARK,
+      payload: payloadToHide,
+    };
+    expect(bookmarkReducer(previousState, action)).toEqual([{
+      uid: 'character0',
+      type: 'character',
+      redirect: 'characters',
+      id: 0,
+      name: 'test',
+      hidden: true,
+    }]);
+  });
+
+  test('should do nothing', () => {
+    const payload = {
+      uid: 'character0',
+      type: 'character',
+      redirect: 'characters',
+      id: 0,
+      name: 'test',
+      hidden: false,
+    };
+
+    const payloadToHide = {
+      uid: 'character1',
+    };
+    const previousState: TBookmark[] = [payload];
+    const action = {
+      type: HIDE_BOOKMARK,
+      payload: payloadToHide,
+    };
+    expect(bookmarkReducer(previousState, action)).toEqual([{
+      uid: 'character0',
+      type: 'character',
+      redirect: 'characters',
+      id: 0,
+      name: 'test',
+      hidden: false,
+    }]);
   });
 });
