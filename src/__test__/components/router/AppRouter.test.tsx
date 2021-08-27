@@ -1,22 +1,20 @@
-/* eslint-disable jest/expect-expect */
-/* eslint-disable no-unused-vars */
 /* eslint-disable react/react-in-jsx-scope */
 /* eslint-disable import/no-extraneous-dependencies */
-import { createMemoryHistory } from 'history';
+import '@testing-library/jest-dom';
+import '@testing-library/jest-dom/extend-expect';
 import { Router } from 'react-router-dom';
+import { createMemoryHistory } from 'history';
 import { render } from '@testing-library/react';
 import AppRouter from '../../../components/router/AppRouter';
-import '@testing-library/jest-dom';
 
 describe('testing router', () => {
   test('landing on a not found page when no match component', () => {
-    const history = createMemoryHistory({ initialEntries: ['/'] });
-    const { getByText, debug } = render(
+    const history = createMemoryHistory({ initialEntries: ['/page-not-found'] });
+    const { getByText } = render(
       <Router history={history}>
         <AppRouter />
       </Router>,
     );
-    debug();
-    // expect(getByText('Page not found')).toBeInTheDocument();
+    expect(getByText('Page not found.')).toBeInTheDocument();
   });
 });

@@ -89,7 +89,7 @@ describe('testing footer', () => {
       </Router>,
     );
 
-    fireEvent.click(getAllByRole('button')[1]);
+    fireEvent.click(getAllByRole('button')[0]);
     expect(container.getElementsByClassName('side-bar')[0]).toHaveClass('active');
     fireEvent.click(getAllByRole('button')[1]);
     expect(container.getElementsByClassName('side-bar')[0]).not.toHaveClass('active');

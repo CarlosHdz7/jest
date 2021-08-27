@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import { BrowserRouter as Router } from 'react-router-dom';
 import useLocalStorage from '../../hooks/useLocalStorage';
 import { setBookmarks } from '../../redux/actions/bookmarkActions';
 import { TBookmark } from '../../types/TBookmark';
@@ -16,7 +17,9 @@ function App() {
 
   return (
     <div className="App">
-      <AppRouter />
+      <Router>
+        <AppRouter />
+      </Router>
     </div>
   );
 }
