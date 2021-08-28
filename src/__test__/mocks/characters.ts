@@ -1,11 +1,6 @@
-const initialState = {
-  list: {},
-  detail: {},
-  loading: false,
-  error: '',
-};
+import { ICharacter } from '../../interfaces/ICharacter';
 
-const charactersMock = {
+const charactersMock: ICharacter = {
   code: 200,
   status: 'Ok',
   copyright: '© 2021 MARVEL',
@@ -3853,4 +3848,4 @@ const charactersMock = {
   },
 };
 
-export { initialState, charactersMock };
+export default charactersMock;
