@@ -4,7 +4,7 @@ import {
   GET_CHARACTERS_FAILURE, GET_CHARACTERS_REQUEST, GET_CHARACTERS_SUCCESS, GET_CHARACTER_SUCCESS,
 } from '../../../redux/types/charactersTypes';
 import initialState from '../../mocks/initialState';
-import comicsMock from '../../mocks/comics';
+import storiesMock from '../../mocks/stories';
 
 const theError = "I'm an error";
 
@@ -33,11 +33,11 @@ describe('testing character reducer', () => {
     const newState = characterReducer(initialState,
       {
         type: GET_CHARACTERS_SUCCESS,
-        payload: comicsMock,
+        payload: storiesMock,
       });
     expect(newState.loading).toBe(false);
     expect(newState.error).not.toEqual(theError);
-    expect(newState.list).toEqual(comicsMock);
+    expect(newState.list).toEqual(storiesMock);
     expect(newState.detail).toEqual({});
   });
 
@@ -45,11 +45,11 @@ describe('testing character reducer', () => {
     const newState = characterReducer(initialState,
       {
         type: GET_CHARACTER_SUCCESS,
-        payload: comicsMock,
+        payload: storiesMock,
       });
     expect(newState.loading).toBe(false);
     expect(newState.error).not.toEqual(theError);
-    expect(newState.detail).toEqual(comicsMock);
+    expect(newState.detail).toEqual(storiesMock);
     expect(newState.list).toEqual({});
   });
 
