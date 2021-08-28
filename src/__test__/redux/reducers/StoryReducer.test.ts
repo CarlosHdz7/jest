@@ -1,38 +1,39 @@
-import characterReducer from '../../../redux/reducers/characterReducer';
+import storyReducer from '../../../redux/reducers/storyReducer';
 import {
-  CLEAN_CHARACTERS,
-  GET_CHARACTERS_FAILURE, GET_CHARACTERS_REQUEST, GET_CHARACTERS_SUCCESS, GET_CHARACTER_SUCCESS,
-} from '../../../redux/types/charactersTypes';
+  CLEAN_STORIES,
+  GET_STORIES_FAILURE, GET_STORIES_REQUEST, GET_STORIES_SUCCESS, GET_STORY_SUCCESS,
+} from '../../../redux/types/storiesTypes';
+
 import initialState from '../../mocks/initialState';
 import comicsMock from '../../mocks/comics';
 
 const theError = "I'm an error";
 
-describe('testing character reducer', () => {
+describe('testing story reducer', () => {
   it('should return the initial state', () => {
-    expect(characterReducer(undefined, {})).toEqual(initialState);
+    expect(storyReducer(undefined, {})).toEqual(initialState);
   });
 
-  it('should enable flat loading characters with no error', () => {
-    const newState = characterReducer(initialState, { type: GET_CHARACTERS_REQUEST });
+  it('should enable flat loading stories with no error', () => {
+    const newState = storyReducer(initialState, { type: GET_STORIES_REQUEST });
     expect(newState.error).toEqual('');
     expect(newState.loading).toBe(true);
   });
 
-  it('should enable flat loading characters with error', () => {
-    const newState = characterReducer(initialState,
+  it('should enable flat loading stories with error', () => {
+    const newState = storyReducer(initialState,
       {
-        type: GET_CHARACTERS_FAILURE,
+        type: GET_STORIES_FAILURE,
         payload: theError,
       });
     expect(newState.loading).toBe(false);
     expect(newState.error).toEqual(theError);
   });
 
-  it('should load characters without error', () => {
-    const newState = characterReducer(initialState,
+  it('should load stories without error', () => {
+    const newState = storyReducer(initialState,
       {
-        type: GET_CHARACTERS_SUCCESS,
+        type: GET_STORIES_SUCCESS,
         payload: comicsMock,
       });
     expect(newState.loading).toBe(false);
@@ -42,9 +43,9 @@ describe('testing character reducer', () => {
   });
 
   it('should load character without error', () => {
-    const newState = characterReducer(initialState,
+    const newState = storyReducer(initialState,
       {
-        type: GET_CHARACTER_SUCCESS,
+        type: GET_STORY_SUCCESS,
         payload: comicsMock,
       });
     expect(newState.loading).toBe(false);
@@ -53,10 +54,10 @@ describe('testing character reducer', () => {
     expect(newState.list).toEqual({});
   });
 
-  it('should clean characters', () => {
-    const newState = characterReducer(initialState,
+  it('should clean stories', () => {
+    const newState = storyReducer(initialState,
       {
-        type: CLEAN_CHARACTERS,
+        type: CLEAN_STORIES,
       });
     expect(newState.loading).toBe(false);
     expect(newState.error).toEqual('');

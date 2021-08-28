@@ -1,4 +1,3 @@
-/* eslint-disable jest/expect-expect */
 import comicReducer from '../../../redux/reducers/comicReducer';
 import {
   CLEAN_COMICS,
