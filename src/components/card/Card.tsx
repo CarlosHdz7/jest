@@ -15,7 +15,7 @@ const Card = ({
     <img
       className="card-img"
       src={`${path}.${extension}`}
-      alt=""
+      alt={title}
     />
     <span className="card-title">{title}</span>
   </Link>
