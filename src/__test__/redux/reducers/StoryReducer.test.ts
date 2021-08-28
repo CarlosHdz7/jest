@@ -5,7 +5,7 @@ import {
 } from '../../../redux/types/storiesTypes';
 
 import initialState from '../../mocks/initialState';
-import comicsMock from '../../mocks/comics';
+import storiesMock from '../../mocks/stories';
 
 const theError = "I'm an error";
 
@@ -34,11 +34,11 @@ describe('testing story reducer', () => {
     const newState = storyReducer(initialState,
       {
         type: GET_STORIES_SUCCESS,
-        payload: comicsMock,
+        payload: storiesMock,
       });
     expect(newState.loading).toBe(false);
     expect(newState.error).not.toEqual(theError);
-    expect(newState.list).toEqual(comicsMock);
+    expect(newState.list).toEqual(storiesMock);
     expect(newState.detail).toEqual({});
   });
 
@@ -46,11 +46,11 @@ describe('testing story reducer', () => {
     const newState = storyReducer(initialState,
       {
         type: GET_STORY_SUCCESS,
-        payload: comicsMock,
+        payload: storiesMock,
       });
     expect(newState.loading).toBe(false);
     expect(newState.error).not.toEqual(theError);
-    expect(newState.detail).toEqual(comicsMock);
+    expect(newState.detail).toEqual(storiesMock);
     expect(newState.list).toEqual({});
   });
 

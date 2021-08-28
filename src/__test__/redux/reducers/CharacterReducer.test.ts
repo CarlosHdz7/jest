@@ -1,10 +1,11 @@
+/* eslint-disable jest/expect-expect */
 import characterReducer from '../../../redux/reducers/characterReducer';
 import {
   CLEAN_CHARACTERS,
   GET_CHARACTERS_FAILURE, GET_CHARACTERS_REQUEST, GET_CHARACTERS_SUCCESS, GET_CHARACTER_SUCCESS,
 } from '../../../redux/types/charactersTypes';
 import initialState from '../../mocks/initialState';
-import storiesMock from '../../mocks/stories';
+import charactersMock from '../../mocks/characters';
 
 const theError = "I'm an error";
 
@@ -33,11 +34,11 @@ describe('testing character reducer', () => {
     const newState = characterReducer(initialState,
       {
         type: GET_CHARACTERS_SUCCESS,
-        payload: storiesMock,
+        payload: charactersMock,
       });
     expect(newState.loading).toBe(false);
     expect(newState.error).not.toEqual(theError);
-    expect(newState.list).toEqual(storiesMock);
+    expect(newState.list).toEqual(charactersMock);
     expect(newState.detail).toEqual({});
   });
 
@@ -45,11 +46,11 @@ describe('testing character reducer', () => {
     const newState = characterReducer(initialState,
       {
         type: GET_CHARACTER_SUCCESS,
-        payload: storiesMock,
+        payload: charactersMock,
       });
     expect(newState.loading).toBe(false);
     expect(newState.error).not.toEqual(theError);
-    expect(newState.detail).toEqual(storiesMock);
+    expect(newState.detail).toEqual(charactersMock);
     expect(newState.list).toEqual({});
   });
 
