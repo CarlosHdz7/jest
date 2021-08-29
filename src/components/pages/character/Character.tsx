@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Redirect, RouteComponentProps, useParams } from 'react-router-dom';
+import { Redirect, useHistory, useParams } from 'react-router-dom';
 import checkBookmark from '../../../helpers/checkBookmark';
 import useLocalStorage from '../../../hooks/useLocalStorage';
 import { ICharacter, ItemsEntityComics, ItemsEntityStories } from '../../../interfaces/ICharacter';
@@ -14,7 +14,8 @@ import routesPath from '../../router/routes';
 
 import './Character.scss';
 
-const Character = ({ history }: RouteComponentProps) => {
+const Character = () => {
+  const history = useHistory();
   const dispatch = useDispatch();
   const { id }: { id: string } = useParams();
   const [, setBookmarksState] = useLocalStorage<Array<TBookmark>>('bookmarks', []);
