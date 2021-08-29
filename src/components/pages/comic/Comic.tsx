@@ -74,7 +74,7 @@ const Comic = () => {
   return (
     <>
       {loading && <Loader />}
-      {!loading && (
+      {(!loading && comic) && (
         <>
           { comic.code === 404 && <Redirect to={routesPath.ERROR404} /> }
           <Breadcrumb page="Comics" item={comic.data?.results[0].title} redirect="/comics" />
@@ -122,7 +122,7 @@ const Comic = () => {
               <p className="detail-title"><b>Characters</b></p>
               {
                 comic.data?.results[0].characters.items.map((item: ItemsEntityOrSeries) => (
-                  <p>
+                  <p key={item.name}>
                     ●
                     {' '}
                     {item.name}
@@ -137,7 +137,7 @@ const Comic = () => {
                 <p className="detail-title"><b>Stories</b></p>
                 {
                   comic.data?.results[0].stories.items.map((item: ItemsEntityStories) => (
-                    <p>
+                    <p key={item.name}>
                       ●
                       {' '}
                       {item.name}
