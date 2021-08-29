@@ -26,6 +26,6 @@ describe('testing app', () => {
     localStorage.setItem('test', 'Hello world');
     const { result } = renderHook(() => useLocalStorage('test', 'Hello world'));
     const [state] = result.current;
-    expect(state).toEqual([]);
+    expect(state).toEqual('Hello world');
   });
 });
