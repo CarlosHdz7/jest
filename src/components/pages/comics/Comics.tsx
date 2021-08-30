@@ -4,7 +4,7 @@ import React, {
 } from 'react';
 
 import _ from 'lodash';
-import { RouteComponentProps } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { IComic, ResultsEntityComic } from '../../../interfaces/IComic';
 import { getComics, cleanComics } from '../../../redux/actions/comicsActions';
@@ -16,12 +16,13 @@ import { RootState } from '../../../redux/reducers';
 import { TBookmark } from '../../../types/TBookmark';
 import './Comics.scss';
 
-const Comics = ({ location, history }: RouteComponentProps) => {
+const Comics = () => {
+  const history = useHistory();
   const inputRef = useRef() as MutableRefObject<HTMLInputElement>;
   const selectRef = useRef() as MutableRefObject<HTMLSelectElement>;
   const dispatch = useDispatch();
 
-  const params = new URLSearchParams(location.search);
+  const params = new URLSearchParams(history.location.search);
   const page = params.get('page') || '1';
   const title = params.get('title') || '';
   const format = params.get('format') || '';
@@ -38,7 +39,7 @@ const Comics = ({ location, history }: RouteComponentProps) => {
   }, [dispatch, offset, title, format]);
 
   const buildQuery = (pageQuery: string, titleQuery: string, formatQuery : string) => {
-    const currentUrlParams = new URLSearchParams(location.search);
+    const currentUrlParams = new URLSearchParams(history.location.search);
     currentUrlParams.set('page', pageQuery);
     (titleQuery)
       ? currentUrlParams.set('title', titleQuery)
@@ -60,7 +61,7 @@ const Comics = ({ location, history }: RouteComponentProps) => {
   }, 1000);
 
   const handleSelect = () => {
-    const currentUrlParams = new URLSearchParams(location.search);
+    const currentUrlParams = new URLSearchParams(history.location.search);
     currentUrlParams.set('page', '1');
 
     (selectRef.current.value)

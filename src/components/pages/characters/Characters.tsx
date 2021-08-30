@@ -5,7 +5,7 @@ import React, {
 } from 'react';
 
 import _ from 'lodash';
-import { RouteComponentProps } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { ICharacter, ResultsEntityCharacter } from '../../../interfaces/ICharacter';
 import { getCharacters, cleanCharacters } from '../../../redux/actions/characterActions';
@@ -23,13 +23,14 @@ import { IStory } from '../../../interfaces/IStory';
 import { cleanStories, getStories } from '../../../redux/actions/storyActions';
 import { TSelectItem } from '../../../types/TSelectItem';
 
-const Characters = ({ location, history }: RouteComponentProps) => {
+const Characters = () => {
+  const history = useHistory();
   const inputRef = useRef() as MutableRefObject<HTMLInputElement>;
   const selectRef = useRef() as MutableRefObject<HTMLSelectElement>;
   const selectRef2 = useRef() as MutableRefObject<HTMLSelectElement>;
   const dispatch = useDispatch();
 
-  const params = new URLSearchParams(location.search);
+  const params = new URLSearchParams(history.location.search);
   const page = params.get('page') || '1';
   const name = params.get('name') || '';
   const comic = params.get('comics') || '';
@@ -61,7 +62,7 @@ const Characters = ({ location, history }: RouteComponentProps) => {
 
   const buildQuery = (pageQuery: string, nameQuery: string,
     comicQuery : string, storiesQuery: string) => {
-    const currentUrlParams = new URLSearchParams(location.search);
+    const currentUrlParams = new URLSearchParams(history.location.search);
     currentUrlParams.set('page', pageQuery);
     (nameQuery)
       ? currentUrlParams.set('name', nameQuery)
