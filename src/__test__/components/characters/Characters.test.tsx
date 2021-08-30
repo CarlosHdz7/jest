@@ -9,9 +9,9 @@ import { Router } from 'react-router';
 import store from '../../../redux/store';
 import Characters from '../../../components/pages/characters';
 
-describe('testing comics detail', () => {
+describe('testing character detail', () => {
   it('should show loader', () => {
-    const history = createMemoryHistory({ initialEntries: ['/characters/1017100'] });
+    const history = createMemoryHistory({ initialEntries: ['/characters/'] });
     const { container } = render(
       <Provider store={store}>
         <Router history={history}>
