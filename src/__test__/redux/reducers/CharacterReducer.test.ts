@@ -1,4 +1,3 @@
-/* eslint-disable jest/expect-expect */
 import characterReducer from '../../../redux/reducers/characterReducer';
 import {
   CLEAN_CHARACTERS,

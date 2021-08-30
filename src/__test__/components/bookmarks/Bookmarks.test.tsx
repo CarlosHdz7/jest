@@ -1,6 +1,4 @@
-/* eslint-disable no-unused-vars */
 /* eslint-disable import/no-extraneous-dependencies */
-/* eslint-disable jest/expect-expect */
 /* eslint-disable react/react-in-jsx-scope */
 import '@testing-library/jest-dom';
 import { Provider } from 'react-redux';

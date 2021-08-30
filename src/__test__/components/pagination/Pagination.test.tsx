@@ -1,6 +1,3 @@
-/* eslint-disable max-len */
-/* eslint-disable no-unused-vars */
-/* eslint-disable jest/expect-expect */
 /* eslint-disable react/react-in-jsx-scope */
 import { fireEvent, render } from '@testing-library/react';
 import Pagination from '../../../components/pages/pagination/Pagination';

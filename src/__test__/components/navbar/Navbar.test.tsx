@@ -1,4 +1,3 @@
-/* eslint-disable jest/expect-expect */
 /* eslint-disable react/react-in-jsx-scope */
 /* eslint-disable import/no-extraneous-dependencies */
 

@@ -1,5 +1,3 @@
-/* eslint-disable no-console */
-/* eslint-disable jest/expect-expect */
 import _ from 'lodash';
 import bookmarkReducer from '../../../redux/reducers/bookmarkReducer';
 import {

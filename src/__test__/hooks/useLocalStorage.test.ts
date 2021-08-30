@@ -1,6 +1,4 @@
 /* eslint-disable import/no-extraneous-dependencies */
-/* eslint-disable jest/expect-expect */
-// eslint-disable-next-line import/no-unresolved
 import { renderHook, act } from '@testing-library/react-hooks';
 import useLocalStorage from '../../hooks/useLocalStorage';
 

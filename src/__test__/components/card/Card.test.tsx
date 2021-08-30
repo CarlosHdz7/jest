@@ -1,13 +1,9 @@
 /* eslint-disable import/no-extraneous-dependencies */
-/* eslint-disable import/order */
-/* eslint-disable jest/expect-expect */
 /* eslint-disable react/react-in-jsx-scope */
-// import { render } from '@testing-library/react';
 import Card from '../../../components/card/Card';
 import '@testing-library/jest-dom';
 import renderWithWrapper from '../../utils/Wrapper';
 import { comicMock } from '../../mocks/comics';
-// import routesPath from '../../../components/router/routes';
 
 describe('testing card', () => {
   test('should render card component', () => {
@@ -19,7 +15,6 @@ describe('testing card', () => {
       mark={false}
       customClass="my-class"
     />);
-    // const regex = new RegExp(comicMock.title, 'i');
     expect(getByAltText(comicMock.title)).toBeTruthy();
   });
 
@@ -33,7 +28,6 @@ describe('testing card', () => {
       customClass="my-class"
     />);
 
-    // const regex = new RegExp(comicMock.title, 'i');
     expect(getByText(comicMock.title)).toBeTruthy();
   });
 

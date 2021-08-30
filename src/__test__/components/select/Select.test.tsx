@@ -1,13 +1,10 @@
 /* eslint-disable import/no-extraneous-dependencies */
-/* eslint-disable no-unused-vars */
-/* eslint-disable jest/expect-expect */
 /* eslint-disable react/react-in-jsx-scope */
 import { useRef } from 'react';
 import { fireEvent, render } from '@testing-library/react';
 import { renderHook } from '@testing-library/react-hooks';
 import Select from '../../../components/select/Select';
 import '@testing-library/jest-dom';
-import { TSelectItem } from '../../../types/TSelectItem';
 import selectItemsMock from '../../mocks/selectItems';
 
 describe('testing select', () => {
