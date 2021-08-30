@@ -13,17 +13,17 @@ const Bookmarks = () => {
   const [, setBookmarksState] = useLocalStorage<Array<TBookmark>>('bookmarks', []);
   const dispatch = useDispatch();
 
-  const deleteBookmarks = () => {
-    dispatch(removeBookmarks());
-  };
+  // const deleteBookmarks = () => {
+  //   dispatch(removeBookmarks());
+  // };
 
-  const deleteHidden = () => {
-    dispatch(removeHidden());
-  };
+  // const deleteHidden = () => {
+  //   dispatch(removeHidden());
+  // };
 
-  const deleteBookmark = (id: number, type: string) => {
-    dispatch(removeBookmark({ uid: `${type}${id}` }));
-  };
+  // const deleteBookmark = (id: number, type: string) => {
+  //   dispatch(removeBookmark({ uid: `${type}${id}` }));
+  // };
 
   const colorBadged = (option: string) => {
     if (option === 'comic') return 'badged badged--aqua';
@@ -50,7 +50,7 @@ const Bookmarks = () => {
                 <button
                   type="button"
                   className="btn btn-red"
-                  onClick={deleteBookmarks}
+                  onClick={() => dispatch(removeBookmarks())}
                 >
                   <i className="bi bi-trash-fill" />
                   {' '}
@@ -62,7 +62,8 @@ const Bookmarks = () => {
                   && (
                   <div className="bookmark" key={item.id}>
                     <span
-                      onClick={() => deleteBookmark(item.id, item.type)}
+                      // onClick={() => deleteBookmark(item.id, item.type)}
+                      onClick={() => dispatch(removeBookmark({ uid: `${item.type}${item.id}` }))}
                       className="bookmark-delete"
                     >
                       <i className="bi bi-trash-fill" />
@@ -88,7 +89,7 @@ const Bookmarks = () => {
                 <button
                   type="button"
                   className="btn btn-red"
-                  onClick={deleteHidden}
+                  onClick={() => dispatch(removeHidden())}
                 >
                   <i className="bi bi-trash-fill" />
                   {' '}
@@ -98,10 +99,11 @@ const Bookmarks = () => {
               {
                 hidden.map((item: TBookmark) => (item.hidden
                   && (
-                  <div className="bookmark" key={item.id}>
+                  <div className="hidden" key={item.id}>
                     <span
-                      onClick={() => deleteBookmark(item.id, item.type)}
-                      className="bookmark-delete"
+                      // onClick={() => deleteBookmark(item.id, item.type)}
+                      onClick={() => dispatch(removeBookmark({ uid: `${item.type}${item.id}` }))}
+                      className="hidden-delete"
                     >
                       <i className="bi bi-trash-fill" />
                     </span>

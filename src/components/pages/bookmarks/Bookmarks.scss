@@ -12,7 +12,7 @@
   margin-bottom: 10px;
 }
 
-.bookmark{
+.bookmark, .hidden{
   border-radius: 5px;
   padding: 10px;
   display: flex;
@@ -32,7 +32,7 @@
   text-decoration: none;
 }
 
-.bookmark-delete{
+.bookmark-delete, .hidden-delete{
   margin-right: 15px;
   background-color: $black3-color;
   padding: 5px;
