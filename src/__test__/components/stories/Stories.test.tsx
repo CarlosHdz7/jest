@@ -7,15 +7,15 @@ import { render } from '@testing-library/react';
 import { createMemoryHistory } from 'history';
 import { Router } from 'react-router';
 import store from '../../../redux/store';
-import Characters from '../../../components/pages/characters';
+import Stories from '../../../components/pages/stories';
 
 describe('testing comics detail', () => {
   it('should show loader', () => {
-    const history = createMemoryHistory({ initialEntries: ['/characters/1017100'] });
+    const history = createMemoryHistory({ initialEntries: ['/stories/8'] });
     const { container } = render(
       <Provider store={store}>
         <Router history={history}>
-          <Characters />
+          <Stories />
         </Router>
       </Provider>,
     );

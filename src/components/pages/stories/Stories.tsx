@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-expressions */
 import React, { useEffect, useState } from 'react';
 
-import { RouteComponentProps } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { IStory, ResultsEntityStory } from '../../../interfaces/IStory';
 import { cleanStories, getStories } from '../../../redux/actions/storyActions';
@@ -12,10 +12,11 @@ import checkBookmark from '../../../helpers/checkBookmark';
 import { RootState } from '../../../redux/reducers';
 import { TBookmark } from '../../../types/TBookmark';
 
-const Stories = ({ location, history }: RouteComponentProps) => {
+const Stories = () => {
+  const history = useHistory();
   const dispatch = useDispatch();
 
-  const params = new URLSearchParams(location.search);
+  const params = new URLSearchParams(history.location.search);
   const page = params.get('page') || '1';
 
   const offset = (parseInt(page, 10) - 1) * 20;
