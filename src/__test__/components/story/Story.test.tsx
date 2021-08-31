@@ -122,4 +122,32 @@ describe('testing story detail', () => {
     fireEvent.click(getByText('Hide'));
     expect(dummyDispatch).toHaveBeenCalled();
   });
+
+  it('should redirect 404', () => {
+    const dummyDispatch = jest.fn();
+    useDispatchMock.mockReturnValue(dummyDispatch);
+
+    storiesMock.code = 404;
+
+    jest
+      .spyOn(reactRedux, 'useSelector')
+      .mockImplementation((callback) => callback({
+        stories: {
+          detail: storiesMock,
+          loading: false,
+          bookmarks: [],
+        },
+      }));
+
+    const history = createMemoryHistory({ initialEntries: ['/stories/7'] });
+
+    render(
+      <Provider store={store}>
+        <Router history={history}>
+          <Story />
+        </Router>
+      </Provider>,
+    );
+    expect(history.location.pathname).toBe('/Error404');
+  });
 });
