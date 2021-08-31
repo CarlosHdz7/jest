@@ -14,6 +14,8 @@ import { Router } from 'react-router';
 import store from '../../../redux/store';
 import Characters from '../../../components/pages/characters';
 import charactersMock from '../../mocks/characters';
+import { comicsMock } from '../../mocks/comics';
+import storiesMock from '../../mocks/stories';
 
 type TestElement = Document | Element | Window | Node
 
@@ -32,12 +34,12 @@ describe('testing characters list', () => {
           bookmarks: [],
         },
         comics: {
-          list: [],
-          loading: true,
+          list: comicsMock,
+          loading: false,
         },
         stories: {
-          list: [],
-          loading: true,
+          list: storiesMock,
+          loading: false,
         },
       }));
 

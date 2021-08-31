@@ -46,7 +46,7 @@ describe('testing card', () => {
   });
 
   test('should have mark', () => {
-    const { debug } = renderWithWrapper(<Card
+    const { container } = renderWithWrapper(<Card
       path={`${comicMock.thumbnail.path}/portrait_incredible`}
       extension={comicMock.thumbnail.extension}
       title={comicMock.title}
@@ -54,6 +54,6 @@ describe('testing card', () => {
       mark
       customClass="my-class"
     />);
-    debug();
+    expect(container.getElementsByClassName('mark')[0]).toBeTruthy();
   });
 });
