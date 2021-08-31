@@ -122,4 +122,32 @@ describe('testing comic detail', () => {
     fireEvent.click(getByText('Hide'));
     expect(dummyDispatch).toHaveBeenCalled();
   });
+
+  it('should redirect 404', () => {
+    const dummyDispatch = jest.fn();
+    useDispatchMock.mockReturnValue(dummyDispatch);
+
+    comicsMock.code = 404;
+
+    jest
+      .spyOn(reactRedux, 'useSelector')
+      .mockImplementation((callback) => callback({
+        comics: {
+          detail: comicsMock,
+          loading: false,
+          bookmarks: [],
+        },
+      }));
+
+    const history = createMemoryHistory({ initialEntries: ['/comics/82970'] });
+
+    render(
+      <Provider store={store}>
+        <Router history={history}>
+          <Comic />
+        </Router>
+      </Provider>,
+    );
+    expect(history.location.pathname).toBe('/Error404');
+  });
 });
