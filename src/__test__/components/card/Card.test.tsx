@@ -1,6 +1,7 @@
 /* eslint-disable jest/expect-expect */
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable react/react-in-jsx-scope */
+import { fireEvent, screen } from '@testing-library/react';
 import Card from '../../../components/card/Card';
 import '@testing-library/jest-dom';
 import renderWithWrapper from '../../utils/Wrapper';
@@ -55,5 +56,19 @@ describe('testing card', () => {
       customClass="my-class"
     />);
     expect(container.getElementsByClassName('mark')[0]).toBeTruthy();
+  });
+
+  test('should redirect after click', () => {
+    const { container } = renderWithWrapper(<Card
+      path={`${comicMock.thumbnail.path}/portrait_incredible`}
+      extension={comicMock.thumbnail.extension}
+      title={comicMock.title}
+      redirect={`/comics/${comicMock.id}`}
+      mark
+      customClass="my-class"
+    />);
+
+    fireEvent.click(container.getElementsByClassName('card')[0]);
+    expect(screen.getByTestId('location-display')).toHaveTextContent(`/comics/${comicMock.id}`);
   });
 });

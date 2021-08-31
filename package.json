@@ -28,7 +28,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "jest": "npm run test -- --coverage --watchAll"
+    "jest": "npm run test -- --coverage --watchAll --detectOpenHandles"
   },
   "eslintConfig": {
     "extends": [
