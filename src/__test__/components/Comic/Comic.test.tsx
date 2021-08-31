@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable jest/expect-expect */
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable react/react-in-jsx-scope */
 import '@testing-library/jest-dom';
@@ -87,7 +85,7 @@ describe('testing comic detail', () => {
 
     const history = createMemoryHistory({ initialEntries: ['/comics/82970'] });
 
-    const { debug, getByText } = render(
+    const { getByText } = render(
       <Provider store={store}>
         <Router history={history}>
           <Comic />

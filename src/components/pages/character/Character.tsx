@@ -116,7 +116,7 @@ const Character = () => {
                 <p className="detail-title"><b>Comics</b></p>
                 {
                   character.data?.results[0].comics.items.map((item: ItemsEntityComics) => (
-                    <p>
+                    <p key={item.name}>
                       ●
                       {' '}
                       {item.name}
@@ -131,7 +131,7 @@ const Character = () => {
                   <p className="detail-title"><b>Stories</b></p>
                   {
                     character.data?.results[0].stories.items.map((item: ItemsEntityStories) => (
-                      <p>
+                      <p key={item.name}>
                         ●
                         {' '}
                         {item.name}
