@@ -1,3 +1,4 @@
+/* eslint-disable jest/expect-expect */
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable react/react-in-jsx-scope */
 import '@testing-library/jest-dom';
@@ -121,5 +122,34 @@ describe('testing character detail', () => {
     );
     fireEvent.click(getByText('Hide'));
     expect(dummyDispatch).toHaveBeenCalled();
+  });
+
+  it('should redirect 404', () => {
+    const dummyDispatch = jest.fn();
+    useDispatchMock.mockReturnValue(dummyDispatch);
+
+    charactersMock.code = 404;
+
+    jest
+      .spyOn(reactRedux, 'useSelector')
+      .mockImplementation((callback) => callback({
+        characters: {
+          detail: charactersMock,
+          loading: false,
+          bookmarks: [],
+        },
+      }));
+
+    const history = createMemoryHistory({ initialEntries: ['/characters/1011334'] });
+
+    render(
+      <Provider store={store}>
+        <Router history={history}>
+          <Character />
+        </Router>
+      </Provider>,
+    );
+
+    expect(history.location.pathname).toBe('/Error404');
   });
 });
