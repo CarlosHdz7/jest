@@ -66,7 +66,7 @@ describe('testing comics detail', () => {
     expect(getAllByText('Gun Theory (2003) #3')[0]).toBeInTheDocument();
   });
 
-  it('should update search text', async () => {
+  it('should update url when searching text', async () => {
     jest
       .spyOn(reactRedux, 'useSelector')
       .mockImplementation((callback) => callback({
@@ -90,5 +90,8 @@ describe('testing comics detail', () => {
     const input = getByRole('textbox');
     fireEvent.change(input, { target: { value: 'Spider' } });
     expect(hasInputValue(input, 'Spider')).toBe(true);
+    await new Promise((r) => setTimeout(r, 2000));
+    expect(history).toHaveLength(2);
+    expect(history.entries[1].search).toBe('?page=1&title=Spider');
   });
 });
