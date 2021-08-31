@@ -1,3 +1,4 @@
+/* eslint-disable jest/expect-expect */
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable react/react-in-jsx-scope */
 import Card from '../../../components/card/Card';
@@ -42,5 +43,17 @@ describe('testing card', () => {
     />);
 
     expect(container.getElementsByClassName('my-class')[0].getAttribute('href')).toBe(`/comics/${comicMock.id}`);
+  });
+
+  test('should have mark', () => {
+    const { debug } = renderWithWrapper(<Card
+      path={`${comicMock.thumbnail.path}/portrait_incredible`}
+      extension={comicMock.thumbnail.extension}
+      title={comicMock.title}
+      redirect={`/comics/${comicMock.id}`}
+      mark
+      customClass="my-class"
+    />);
+    debug();
   });
 });
