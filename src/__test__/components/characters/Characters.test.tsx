@@ -1,14 +1,11 @@
-/* eslint-disable no-unused-vars */
 /* eslint-disable import/no-extraneous-dependencies */
-/* eslint-disable jest/expect-expect */
 /* eslint-disable react/react-in-jsx-scope */
 import '@testing-library/jest-dom';
 import { Provider } from 'react-redux';
 import {
-  fireEvent, render, screen, waitFor,
+  fireEvent, render, screen,
 } from '@testing-library/react';
 import * as reactRedux from 'react-redux';
-import userEvent from '@testing-library/user-event';
 import { createMemoryHistory } from 'history';
 import { Router } from 'react-router';
 import store from '../../../redux/store';
@@ -109,11 +106,9 @@ describe('testing characters list', () => {
         },
       }));
 
-    const handleSearch = jest.fn();
-
     const history = createMemoryHistory({ initialEntries: ['/characters/1011334'] });
 
-    const { debug, getByRole } = render(
+    const { getByRole } = render(
       <Provider store={store}>
         <Router history={history}>
           <Characters />
