@@ -25,4 +25,14 @@ describe('testing useLocalStorage', () => {
     const [state2] = result.current;
     expect(state2).toEqual('Hello test');
   });
+
+  test('set function value localStorage', () => {
+    const { result } = renderHook(() => useLocalStorage('test', 'Hello world'));
+    const [, setState] = result.current;
+    act(() => {
+      setState(() => 'Hello test');
+    });
+    const [state2] = result.current;
+    expect(state2).toEqual('Hello test');
+  });
 });
