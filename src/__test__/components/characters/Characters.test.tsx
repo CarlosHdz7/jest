@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable jest/expect-expect */
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable react/react-in-jsx-scope */
 import '@testing-library/jest-dom';
@@ -106,7 +108,7 @@ describe('testing characters list', () => {
         },
       }));
 
-    const history = createMemoryHistory({ initialEntries: ['/characters/1011334'] });
+    const history = createMemoryHistory({ initialEntries: ['/characters'] });
 
     const { getByRole } = render(
       <Provider store={store}>
@@ -119,8 +121,49 @@ describe('testing characters list', () => {
     const input = getByRole('textbox');
     fireEvent.change(input, { target: { value: 'Spider' } });
     expect(hasInputValue(input, 'Spider')).toBe(true);
-    await new Promise((r) => setTimeout(r, 2000));
+    await new Promise((r) => setTimeout(r, 1000));
     expect(history).toHaveLength(2);
     expect(history.entries[1].search).toBe('?page=1&name=Spider');
+  });
+
+  it('should update url when select comics or stories', async () => {
+    jest
+      .spyOn(reactRedux, 'useSelector')
+      .mockImplementation((callback) => callback({
+        characters: {
+          list: charactersMock,
+          loading: false,
+          bookmarks: [],
+        },
+        comics: {
+          list: comicsMock,
+          loading: false,
+        },
+        stories: {
+          list: storiesMock,
+          loading: false,
+        },
+      }));
+
+    const history = createMemoryHistory({ initialEntries: ['/characters'] });
+
+    const { getAllByRole } = render(
+      <Provider store={store}>
+        <Router history={history}>
+          <Characters />
+        </Router>
+      </Provider>,
+    );
+
+    const comicsSelect = getAllByRole('combobox')[0];
+    fireEvent.change(comicsSelect, { target: { value: '1308' } });
+    await new Promise((r) => setTimeout(r, 1000));
+    expect(history).toHaveLength(2);
+    expect(history.entries[1].search).toBe('?page=1&comics=1308');
+
+    const storiesSelect = getAllByRole('combobox')[1];
+    fireEvent.change(storiesSelect, { target: { value: '1831' } });
+    await new Promise((r) => setTimeout(r, 1000));
+    expect(history).toHaveLength(3);
   });
 });

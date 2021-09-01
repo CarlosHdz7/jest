@@ -90,7 +90,7 @@ describe('testing comics detail', () => {
     const input = getByRole('textbox');
     fireEvent.change(input, { target: { value: 'Spider' } });
     expect(hasInputValue(input, 'Spider')).toBe(true);
-    await new Promise((r) => setTimeout(r, 2000));
+    await new Promise((r) => setTimeout(r, 1000));
     expect(history).toHaveLength(2);
     expect(history.entries[1].search).toBe('?page=1&title=Spider');
   });
