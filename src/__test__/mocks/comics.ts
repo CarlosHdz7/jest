@@ -77,10 +77,15 @@ const comicsMock: IComic = {
           returned: 1,
         },
         characters: {
-          available: 0,
-          collectionURI: 'http://gateway.marvel.com/v1/public/comics/82967/characters',
-          items: [],
-          returned: 0,
+          available: 1,
+          collectionURI: 'http://gateway.marvel.com/v1/public/comics/1308/characters',
+          items: [
+            {
+              resourceURI: 'http://gateway.marvel.com/v1/public/characters/1009610',
+              name: 'Spider-Man (Peter Parker)',
+            },
+          ],
+          returned: 1,
         },
         stories: {
           available: 2,
