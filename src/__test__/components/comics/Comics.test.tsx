@@ -94,4 +94,32 @@ describe('testing comics detail', () => {
     expect(history).toHaveLength(2);
     expect(history.entries[1].search).toBe('?page=1&title=Spider');
   });
+
+  it('should update url when select format', async () => {
+    jest
+      .spyOn(reactRedux, 'useSelector')
+      .mockImplementation((callback) => callback({
+        comics: {
+          list: comicsMock,
+          loading: false,
+          bookmarks: [],
+        },
+      }));
+
+    const history = createMemoryHistory({ initialEntries: ['/comics'] });
+
+    const { getByRole } = render(
+      <Provider store={store}>
+        <Router history={history}>
+          <Comics />
+        </Router>
+      </Provider>,
+    );
+
+    const formatSelect = getByRole('combobox');
+    fireEvent.change(formatSelect, { target: { value: 'magazine' } });
+    await new Promise((r) => setTimeout(r, 1000));
+    expect(history).toHaveLength(2);
+    expect(history.entries[1].search).toBe('?page=1&format=magazine');
+  });
 });
