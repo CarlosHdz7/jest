@@ -28,10 +28,15 @@ const storiesMock: IStory = {
           returned: 0,
         },
         characters: {
-          available: 0,
-          collectionURI: 'http://gateway.marvel.com/v1/public/stories/7/characters',
-          items: [],
-          returned: 0,
+          available: 1,
+          collectionURI: 'http://gateway.marvel.com/v1/public/stories/1214/characters',
+          items: [
+            {
+              resourceURI: 'http://gateway.marvel.com/v1/public/characters/1009262',
+              name: 'Daredevil',
+            },
+          ],
+          returned: 1,
         },
         series: {
           available: 1,

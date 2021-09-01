@@ -13,18 +13,6 @@ const Bookmarks = () => {
   const [, setBookmarksState] = useLocalStorage<Array<TBookmark>>('bookmarks', []);
   const dispatch = useDispatch();
 
-  // const deleteBookmarks = () => {
-  //   dispatch(removeBookmarks());
-  // };
-
-  // const deleteHidden = () => {
-  //   dispatch(removeHidden());
-  // };
-
-  // const deleteBookmark = (id: number, type: string) => {
-  //   dispatch(removeBookmark({ uid: `${type}${id}` }));
-  // };
-
   const colorBadged = (option: string) => {
     if (option === 'comic') return 'badged badged--aqua';
     if (option === 'character') return 'badged badged--blue';
@@ -62,7 +50,6 @@ const Bookmarks = () => {
                   && (
                   <div className="bookmark" key={item.id}>
                     <span
-                      // onClick={() => deleteBookmark(item.id, item.type)}
                       onClick={() => dispatch(removeBookmark({ uid: `${item.type}${item.id}` }))}
                       className="bookmark-delete"
                     >
@@ -101,7 +88,6 @@ const Bookmarks = () => {
                   && (
                   <div className="hidden" key={item.id}>
                     <span
-                      // onClick={() => deleteBookmark(item.id, item.type)}
                       onClick={() => dispatch(removeBookmark({ uid: `${item.type}${item.id}` }))}
                       className="hidden-delete"
                     >
